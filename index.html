@@ -1,0 +1,67 @@
+	<!DOCTYPE html >
+	<html>
+	<head>
+		<title>
+			The Network
+		</title>
+		<script type="text/javascript" src="lib/jquery/3.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="lib/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="lib/angularjs/1.4.8/angular.min.js"></script>
+		<script type="text/javascript" src="lib/angularjs/1.4.8/angular-route.js"></script>
+		<script type="text/javascript" src="controllers/controllers.js"></script>
+		<link rel="stylesheet" type="text/css" href="lib/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+		<div ng-app="theNetwork" ng-controller="reqCtrl">
+			<div>
+				<div class=" col-md-10  well">
+					<span class="close" data-toggle="tooltip" title="close">X</span>
+
+					<h3>Disque de plateau </h1>
+						<img src="images/thumbnails/html5.gif" alt="post img" class="pull-left img-responsive img-thumbnail margin10 img-thumbnail">
+
+						<em>This snippet use <a href="http://bootsnipp.com/snippets/featured/sexy-sidebar-navigation" target="_blank">Sexy Sidebar Navigation</a></em>
+						<article><p>
+							five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release
+							of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of
+							Lorem Ipsum.    
+						</p></article>
+
+					</div>
+				</div>
+				<hr>
+				
+				<div class="media panel" ng-repeat="request in requests">
+					<div class="media-left">
+						<img ng-src="{{request.avatar}}" class="media-object" style="width:60px">
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">{{request.requester}}</h4>
+						<p>{{request.description}}</p>
+						<a type="button" href="/viewRequest/{{request.id}}" data-toggle="tooltip" title="{{request.views}} Views" class="btn btn-default btn-sm pull-right ">
+							<span class="glyphicon glyphicon-eye-open "></span> View
+						</a>
+						<div class=" margin10"></div>
+						<a type="button" href="/addOffer/{{request.id}}" data-toggle="tooltip" title="make an offer " class="btn btn-default btn-sm pull-right btn-success btn-space">
+							<span class="glyphicon glyphicon-thumbs-up"></span> Offer
+						</a>
+					</div>
+				</div>
+				<div class="ng-view">
+
+				</div>
+
+			</div>
+			<script>
+
+				$(document).ready(function(){
+					$('[data-toggle="tooltip"]').tooltip();
+					$(".close").click(function(){
+						$(this).parent().remove();
+					})
+				});
+
+			</script>
+		</body>
+		</html>
